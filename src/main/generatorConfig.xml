@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 如果命令行使用mybatis-gen，则需要以下这个参数 -->
+    <classPathEntry location="mysql-connector-java-5.1.26-bin.jar" />
+	<context id="mysqlTables" targetRuntime="MyBatis3">
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://127.0.0.1:3306/test"
+			userId="root" password="root" />
+
+		<!-- 指定生成的类型为java类型，避免数据库中number等类型字段 -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- 生成model模型，对应的包，存放位置可以指定具体的路径,如/ProjectName/src，也可以使用auto来自动生成 -->
+		<javaModelGenerator targetPackage="com.netty.entity"
+			targetProject="java">
+			<property name="enableSubPackages" value="true" />
+		</javaModelGenerator>
+
+		<!--对应的xml mapper文件 -->
+		<sqlMapGenerator targetPackage="Mapper"
+			targetProject="resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- 对应的dao接口 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.netty.dao" targetProject="java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+
+        <table tableName="user" domainObjectName="User">
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+        </table>
+		
+	</context>
+</generatorConfiguration>

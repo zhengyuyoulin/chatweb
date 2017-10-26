@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!--Spring会注意到包中文件，可以再上面添加注解（除去Spring注解controller）-->
+    <context:component-scan base-package="com.netty">
+        <context:exclude-filter type="annotation"
+                                expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+    <!-- 读取ClassPath中的properties配置文件 -->
+    <!--<context:property-placeholder location="classpath:db.properties"/>-->
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property  name="location"  value="classpath:db.properties"/>
+    </bean>
+
+    <!-- 配置DBCP数据源 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+        <property name="maxWait" value="5000"/>
+    </bean>
+
+    <!-- 声明JDBC事务管理器 -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 基于注解的事务 -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!-- 整合Mybatis -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="typeAliasesPackage" value="com.netty.entity"/>
+        <!-- 将resources/Mapper文件夹中的所有mapper xml配置文件进行加载 -->
+        <property name="mapperLocations" value="classpath*:Mapper/*.xml"/>
+    </bean>
+
+    <!-- 自动扫描dao包中的Mapper接口，并放入Spring容器 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.netty.dao"/>
+    </bean>
+
+</beans>

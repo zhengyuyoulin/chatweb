@@ -1,0 +1,16 @@
+﻿{
+	"sSearch": "搜索:",
+	"sProcessing": "<i class='fa fa-spin fa-circle-o-notch'></i> 数据加载中...",
+	"sLengthMenu": "每页显示 _MENU_ 条记录",
+	"sZeroRecords": "没有记录",
+	"sInfo": "第  _START_ 条~第  _END_ 条记录,一共  _TOTAL_ 条",
+	"sInfoEmpty": "显示0条记录",
+	"sInfoFiltered": "(从总结果集 _MAX_中选出)",
+	"oPaginate": {
+		"sFirst": "首页",
+		"sPrevious": "前一页",
+		"sNext": "后一页",
+		"sLast": "尾页"
+	}
+}
+
