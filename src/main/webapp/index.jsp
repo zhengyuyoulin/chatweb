@@ -15,7 +15,7 @@
     <form id="lg-form" name="lg-form">
         <div>
             <label for="username">Username:</label>
-            <input type="text" name="username" id="username" placeholder="用户名190713"/>
+            <input type="text" name="username" id="username" placeholder="用户名haha"/>
         </div>
         <div>
             <label for="password">Password:</label>
