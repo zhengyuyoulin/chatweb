@@ -14,11 +14,11 @@
     <h1>门户入口</h1>
     <form id="lg-form" name="lg-form">
         <div>
-            <label for="username">Username:</label>
+            <label for="username">Usernamehehe:</label>
             <input type="text" name="username" id="username" placeholder="用户名hahahehe"/>
         </div>
         <div>
-            <label for="password">Password:</label>
+            <label for="password">Passwordhehe:</label>
             <input type="password" name="password" id="password" placeholder="密码190713hehe" />
         </div>
         <div>
