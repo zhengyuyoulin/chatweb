@@ -15,11 +15,11 @@
     <form id="lg-form" name="lg-form">
         <div>
             <label for="username">Username:</label>
-            <input type="text" name="username" id="username" placeholder="用户名haha"/>
+            <input type="text" name="username" id="username" placeholder="用户名hahahehe"/>
         </div>
         <div>
             <label for="password">Password:</label>
-            <input type="password" name="password" id="password" placeholder="密码190713" />
+            <input type="password" name="password" id="password" placeholder="密码190713hehe" />
         </div>
         <div>
             <button type="button" id="login">登录190713</button>
