@@ -22,7 +22,7 @@
             <input type="password" name="password" id="password" placeholder="密码190713hehe" />
         </div>
         <div>
-            <button type="button" id="login">登录190713</button>
+            <button type="button" id="login">登录190713master</button>
         </div>
     </form>
     <div id="message"></div>
