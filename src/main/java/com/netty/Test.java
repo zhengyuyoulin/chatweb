@@ -6,7 +6,9 @@ package com.netty;
 public class Test {
 
     public static void main(String[] args) {
-        system.out.println("hello");
+        System.out.println("hello");
+        System.out.println("world");
+        System.out.println("....");
     }
 
 }
