@@ -6,11 +6,13 @@ import javax.servlet.http.HttpServletRequest;
 import com.netty.entity.User;
 import com.netty.service.UserService;
 import com.netty.utils.ReturnObj;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.method.HandlerMethod;
 
 /**
  * Created by ren on 2017/10/16.
@@ -22,11 +24,16 @@ public class UserController {
     @Resource
     private UserService userService;
 
-    @RequestMapping(value = "login",method = RequestMethod.POST)
+    @Value("${username}")
+    private String username;
+
+    @RequestMapping(value = "login",method = RequestMethod.GET)
     @ResponseBody
-    public ReturnObj login(User user){
+    public ReturnObj login(){
+
+        System.out.println(username);
         ReturnObj returnObj = new ReturnObj();
-        User user1 = userService.selectUser(user);
+        /*User user1 = userService.selectUser(user);
         if(user1 != null){
             returnObj.setResult(user1.getId().toString());
             returnObj.setCode(200);
@@ -35,7 +42,7 @@ public class UserController {
             returnObj.setResult("error");
             returnObj.setCode(500);
             returnObj.setMsg("登陆失败");
-        }
+        }*/
         return returnObj;
     }
 
